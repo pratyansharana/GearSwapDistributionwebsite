@@ -5,66 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GearSwap - In-Campus Marketplace</title>
   <style>
+    :root {
+      --primary: #c33764;
+      --primary-dark: #a12c52;
+      --bg-gradient: linear-gradient(135deg, #1d2671, #c33764);
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       text-align: center;
-      background: linear-gradient(135deg, #1d2671, #c33764);
+      background: var(--bg-gradient);
       color: white;
+      line-height: 1.6;
     }
     header {
-      padding: 3rem 1rem;
+      padding: 2.5rem 1rem;
     }
     h1 {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
       margin-bottom: 0.5rem;
     }
     p.tagline {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
       margin-top: 0;
       opacity: 0.9;
     }
     section {
-      padding: 2rem 1rem;
+      padding: 1.5rem;
       background: white;
       color: #333;
-      border-radius: 20px;
-      margin: 0 auto 2rem auto;
+      border-radius: 16px;
+      margin: 1rem auto 2rem auto;
       max-width: 850px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     section h2 {
       margin-bottom: 1rem;
-      color: #c33764;
+      color: var(--primary);
+      font-size: clamp(1.5rem, 4vw, 2rem);
     }
     .features {
       text-align: left;
       max-width: 600px;
       margin: 0 auto;
+      padding: 0;
+      list-style: none;
     }
     .features li {
       margin: 10px 0;
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 3.5vw, 1.1rem);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .features li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
     }
     .btn {
       display: inline-block;
-      padding: 15px 30px;
+      padding: 14px 28px;
       margin-top: 20px;
-      background: #c33764;
+      background: var(--primary);
       color: white;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 4vw, 1.2rem);
       border-radius: 8px;
       transition: background 0.3s;
     }
     .btn:hover {
-      background: #a12c52;
+      background: var(--primary-dark);
     }
     footer {
       padding: 1rem;
       background: rgba(0,0,0,0.2);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    /* Mobile-first optimizations */
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      section {
+        margin: 0.8rem;
+        border-radius: 12px;
+        padding: 1.2rem;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+      }
     }
   </style>
 </head>
@@ -81,9 +113,9 @@
       From books to gadgets, find what you need without leaving your college community!
     </p>
     <ul class="features">
-      <li>✔️ Buy & sell items securely within campus</li>
-      <li>✔️ Find books, gadgets, notes & more</li>
-      <li>✔️ Simple, fast, and student-friendly</li>
+      <li>Buy & sell items securely within campus</li>
+      <li>Find books, gadgets, notes & more</li>
+      <li>Simple, fast, and student-friendly</li>
     </ul>
     <!-- Replace the link below with your actual APK or app store link -->
     <a href="gearswap-app.apk" class="btn" download>📥 Download GearSwap</a>
