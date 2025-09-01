@@ -6,9 +6,9 @@
   <title>GearSwap - In-Campus Marketplace</title>
   <style>
     :root {
-      --primary: #c33764;
-      --primary-dark: #a12c52;
-      --bg-gradient: linear-gradient(135deg, #1d2671, #c33764);
+      --primary: #2e7d32; /* green accent */
+      --secondary: #0d1b2a; /* dark navy/gear color */
+      --bg-gradient: linear-gradient(135deg, #0d1b2a, #2e7d32);
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,18 +18,32 @@
       background: var(--bg-gradient);
       color: white;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
-      padding: 2.5rem 1rem;
+      padding: 2rem 1rem 1rem 1rem;
+    }
+    header img {
+      max-width: 140px;
+      height: auto;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      margin: 0.8rem 0 0.3rem;
+      color: var(--primary);
     }
     p.tagline {
       font-size: clamp(1rem, 3.5vw, 1.2rem);
-      margin-top: 0;
+      margin: 0;
       opacity: 0.9;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     section {
       padding: 1.5rem;
@@ -42,7 +56,7 @@
     }
     section h2 {
       margin-bottom: 1rem;
-      color: var(--primary);
+      color: var(--secondary);
       font-size: clamp(1.5rem, 4vw, 2rem);
     }
     .features {
@@ -75,18 +89,25 @@
       transition: background 0.3s;
     }
     .btn:hover {
-      background: var(--primary-dark);
+      background: #256628;
     }
     footer {
       padding: 1rem;
-      background: rgba(0,0,0,0.2);
+      background: rgba(13, 27, 42, 0.9);
       font-size: 0.85rem;
+      color: #f1f1f1;
+    }
+    footer p {
+      margin: 0.3rem 0;
     }
 
     /* Mobile-first optimizations */
     @media (max-width: 480px) {
       header {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
+      }
+      header img {
+        max-width: 110px;
       }
       section {
         margin: 0.8rem;
@@ -102,27 +123,32 @@
 </head>
 <body>
   <header>
-    <h1>📦 GearSwap</h1>
+    <!-- Replace icon.png with your actual uploaded logo filename in repo -->
+    <img src="icon.png" alt="GearSwap Logo" />
+    <h1>GearSwap</h1>
     <p class="tagline">An In-Campus Marketplace App for Students</p>
   </header>
 
-  <section>
-    <h2>About GearSwap</h2>
-    <p>
-      GearSwap makes it easy for students to buy, sell, and exchange items within the campus. 
-      From books to gadgets, find what you need without leaving your college community!
-    </p>
-    <ul class="features">
-      <li>Buy & sell items securely within campus</li>
-      <li>Find books, gadgets, notes & more</li>
-      <li>Simple, fast, and student-friendly</li>
-    </ul>
-    <!-- Replace the link below with your actual APK or app store link -->
-    <a href="gearswap-app.apk" class="btn" download>📥 Download GearSwap</a>
-  </section>
+  <main>
+    <section>
+      <h2>About GearSwap</h2>
+      <p>
+        GearSwap makes it easy for students to buy, sell, and exchange items within the campus. 
+        From books to gadgets, find what you need without leaving your college community!
+      </p>
+      <ul class="features">
+        <li>Buy & sell items securely within campus</li>
+        <li>Find books, gadgets, notes & more</li>
+        <li>Simple, fast, and student-friendly</li>
+      </ul>
+      <!-- Replace the link below with your actual APK or app store link -->
+      <a href="gearswap-app.apk" class="btn" download>📥 Download GearSwap</a>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 GearSwap | Built for Students, by Students❤️</p>
+    <p>&copy; 2025 GearSwap | Built for Students, by Students ❤️</p>
+    <p>Follow us: <a href="#" style="color:#2e7d32; text-decoration:none;">Instagram</a> | <a href="#" style="color:#2e7d32; text-decoration:none;">Twitter</a></p>
   </footer>
 </body>
 </html>
