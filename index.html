@@ -124,7 +124,17 @@
 <body>
   <header>
     <!-- Replace icon.png with your actual uploaded logo filename in repo -->
-    <img src="icon.png" alt="GearSwap Logo" />
+    <Image
+  source={require("icon.png")}
+  style={{
+    width: 120,
+    height: 120,
+    tintColor: "#4CAF50", // same as your background or a theme color
+    opacity: 0.9,         // slightly transparent
+  }}
+  resizeMode="contain"
+/>
+
     <h1>GearSwap</h1>
     <p class="tagline">An In-Campus Marketplace App for Students</p>
   </header>
