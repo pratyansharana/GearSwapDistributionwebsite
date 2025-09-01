@@ -28,6 +28,8 @@
     header img {
       max-width: 140px;
       height: auto;
+      mix-blend-mode: screen; /* blends with background */
+      opacity: 0.9; /* softens edges */
     }
     h1 {
       font-size: clamp(2rem, 5vw, 2.6rem);
@@ -123,17 +125,8 @@
 </head>
 <body>
   <header>
-    <!-- Replace icon.png with your actual uploaded logo filename in repo -->
-    <Image
-  source={require("icon.png")}
-  style={{
-    width: 120,
-    height: 120,
-    tintColor: "#4CAF50", // same as your background or a theme color
-    opacity: 0.9,         // slightly transparent
-  }}
-  resizeMode="contain"
-/>
+    <!-- Use your uploaded logo (transparent PNG works best) -->
+    <img src="icon.png" alt="GearSwap Logo" />
 
     <h1>GearSwap</h1>
     <p class="tagline">An In-Campus Marketplace App for Students</p>
