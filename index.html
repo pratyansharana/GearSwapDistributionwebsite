@@ -6,15 +6,19 @@
   <title>GearSwap - In-Campus Marketplace</title>
   <style>
     :root {
-      --primary: #2e7d32; /* green accent */
-      --secondary: #0d1b2a; /* dark navy/gear color */
-      --bg-gradient: linear-gradient(135deg, #0d1b2a, #2e7d32);
+      --primary: #2e7d32;  /* green accent */
+      --secondary: #0d1b2a; /* deep navy */
+      --text-dark: #222;
+      --text-light: #666;
+      --bg-gradient: linear-gradient(160deg, #0d1b2a, #2e7d32);
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
       background: var(--bg-gradient);
       color: white;
       line-height: 1.6;
@@ -23,21 +27,26 @@
       flex-direction: column;
     }
     header {
-      padding: 2rem 1rem 1rem 1rem;
+      padding: 2rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     header img {
-      max-width: 140px;
+      max-width: 120px;
       height: auto;
-      mix-blend-mode: screen; /* blends with background */
-      opacity: 0.9; /* softens edges */
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 2.6rem);
-      margin: 0.8rem 0 0.3rem;
-      color: var(--primary);
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      margin: 1rem 0 0.3rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     p.tagline {
-      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      font-size: clamp(1rem, 4vw, 1.2rem);
       margin: 0;
       opacity: 0.9;
     }
@@ -46,20 +55,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 1rem;
     }
     section {
-      padding: 1.5rem;
-      background: white;
-      color: #333;
-      border-radius: 16px;
-      margin: 1rem auto 2rem auto;
+      width: 100%;
       max-width: 850px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      background: #fff;
+      color: var(--text-dark);
+      border-radius: 20px;
+      margin: 1rem auto;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      animation: fadeInUp 0.6s ease both;
     }
     section h2 {
       margin-bottom: 1rem;
       color: var(--secondary);
-      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+    }
+    section p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
     }
     .features {
       text-align: left;
@@ -69,65 +87,88 @@
       list-style: none;
     }
     .features li {
-      margin: 10px 0;
-      font-size: clamp(1rem, 3.5vw, 1.1rem);
-      padding-left: 1.5rem;
+      margin: 12px 0;
+      font-size: 1rem;
+      padding-left: 2rem;
       position: relative;
+      color: var(--text-dark);
     }
     .features li::before {
-      content: "✔️";
+      content: "✅";
       position: absolute;
       left: 0;
     }
     .btn {
       display: inline-block;
-      padding: 14px 28px;
-      margin-top: 20px;
+      padding: 14px 30px;
+      margin-top: 25px;
       background: var(--primary);
       color: white;
       text-decoration: none;
-      font-size: clamp(1rem, 4vw, 1.2rem);
-      border-radius: 8px;
-      transition: background 0.3s;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
     }
     .btn:hover {
       background: #256628;
+      transform: translateY(-2px);
     }
     footer {
-      padding: 1rem;
-      background: rgba(13, 27, 42, 0.9);
-      font-size: 0.85rem;
+      padding: 1.2rem;
+      background: rgba(13, 27, 42, 0.95);
+      font-size: 0.9rem;
       color: #f1f1f1;
+      text-align: center;
     }
     footer p {
-      margin: 0.3rem 0;
+      margin: 0.4rem 0;
+    }
+    footer a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Mobile-first optimizations */
     @media (max-width: 480px) {
-      header {
-        padding: 1.5rem 1rem;
-      }
       header img {
-        max-width: 110px;
+        max-width: 90px;
       }
       section {
         margin: 0.8rem;
-        border-radius: 12px;
-        padding: 1.2rem;
+        border-radius: 16px;
+        padding: 1.5rem 1rem;
       }
       .btn {
         width: 100%;
         max-width: 280px;
+      }
+      .features li {
+        font-size: 0.95rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Use your uploaded logo (transparent PNG works best) -->
     <img src="icon.png" alt="GearSwap Logo" />
-
     <h1>GearSwap</h1>
     <p class="tagline">An In-Campus Marketplace App for Students</p>
   </header>
@@ -144,14 +185,17 @@
         <li>Find books, gadgets, notes & more</li>
         <li>Simple, fast, and student-friendly</li>
       </ul>
-      <!-- Replace the link below with your actual APK or app store link -->
       <a href="GearSwap-v-1.0.0.apk" class="btn" download>📥 Download GearSwap</a>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 GearSwap | Built for Students, by Students ❤️</p>
-    <p>Follow us: <a href="#" style="color:#2e7d32; text-decoration:none;">Instagram</a> | <a href="#" style="color:#2e7d32; text-decoration:none;">Twitter</a></p>
+    <p>
+      Follow us: 
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a>
+    </p>
   </footer>
 </body>
 </html>
