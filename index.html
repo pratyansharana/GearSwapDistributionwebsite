@@ -210,7 +210,7 @@
         📥 Download GearSwap
       </a>
       <p id="downloadCount" style="margin-top:15px; color:#0d1b2a; font-weight:600;">
-        Downloads: <span id="count">75</span>
+        Downloads: <span id="count">...</span>
       </p>
     </section>
   </main>
@@ -223,28 +223,62 @@
     </p>
   </footer>
 
-  <script>
-    let count = 75;
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+    // 🔹 Replace this with your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBL8fPcXRqkamLcFSEAJ1LFjrGg9KrTDT0",
+  authDomain: "gearswapdistribution.firebaseapp.com",
+  projectId: "gearswapdistribution",
+  storageBucket: "gearswapdistribution.firebasestorage.app",
+  messagingSenderId: "373690785246",
+  appId: "1:373690785246:web:30a579c3c43b63bbba914f"
+};
+
+    // Init Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
     const btn = document.getElementById("downloadBtn");
     const countEl = document.getElementById("count");
 
-    btn.addEventListener("click", function(e) {
+    // Load current count
+    async function loadCount() {
+      const ref = doc(db, "stats", "downloads");
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        countEl.textContent = snap.data().count;
+      } else {
+        countEl.textContent = "75";
+      }
+    }
+
+    // Increment on click
+    btn.addEventListener("click", async (e) => {
       e.preventDefault();
 
-      // Show loading spinner
       btn.innerHTML = '<span class="spinner"></span> Preparing download...';
+      btn.disabled = true;
+
+      const ref = doc(db, "stats", "downloads");
+      const snap = await getDoc(ref);
+      let current = snap.exists() ? snap.data().count : 75;
+      await updateDoc(ref, { count: current + 1 });
+
+      countEl.textContent = current + 1;
 
       setTimeout(() => {
-        count++;
-        countEl.textContent = count;
-
-        // Reset button text after "download starts"
         btn.innerHTML = "📥 Download GearSwap";
-
-        // Start actual file download
+        btn.disabled = false;
         window.location.href = btn.getAttribute("href");
-      }, 2000); // Simulated 2s delay
+      }, 1500);
     });
+
+    // Initialize
+    loadCount();
   </script>
 </body>
 </html>
